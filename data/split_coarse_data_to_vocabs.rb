@@ -12,7 +12,7 @@ tweets_array.each do|tweet_element|
 	tweet_element[1].split(" ").each{|term| term_frequency_hash[term] += 1} 
 end
 
-CSV.open('legal_onsets_V0.csv', 'w') do |csv_object|
+CSV.open('coarse_combined_data_V0.csv', 'w') do |csv_object|
 	tweets_array.to_a.each do |row_array|
 		csv_object << row_array
 	end
@@ -25,7 +25,7 @@ tweets_array.each do|tweet_element|
 	tweet_element[1].split(" ").each{|term| tweet_element[1].slice!(term) if term_frequency_hash[term] < 5 } 
 end
 
-CSV.open('legal_onsets_V1.csv', 'w') do |csv_object|
+CSV.open('coarse_combined_data_V1.csv', 'w') do |csv_object|
 tweets_array.to_a.each do |row_array|
 csv_object << row_array
 end
@@ -37,7 +37,7 @@ tweets_array.each do|tweet_element|
 	tweet_element[1].split(" ").each{|term| tweet_element[1].slice!(term) if (  (not term.gsub(/[^1-9a-zA-Z_@#-]/).to_a.empty?) and (term.gsub(/https?:/).to_a.empty?)  ) } 
 end
 
-CSV.open('legal_onsets_V2.csv', 'w') do |csv_object|
+CSV.open('coarse_combined_data_V2.csv', 'w') do |csv_object|
 	tweets_array.to_a.each do |row_array|
 	csv_object << row_array
 	end
@@ -49,7 +49,7 @@ tweets_array.each do|tweet_element|
 	tweet_element[1].split(" ").each{|term| tweet_element[1].gsub!(/#{term}/ , "<USERNAME") if(not term.gsub(/@.+/).to_a.empty?)  } 
 end
 
-CSV.open('legal_onsets_V3.csv', 'w') do |csv_object|
+CSV.open('coarse_combined_data_V3.csv', 'w') do |csv_object|
 	tweets_array.to_a.each do |row_array|
 	csv_object << row_array
 	end
